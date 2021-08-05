@@ -29,6 +29,7 @@ jobs:
       - name: Build for all platforms and archs
         run: ./util/build-all.sh
   test:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
