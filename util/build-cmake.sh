@@ -1,5 +1,9 @@
 #!/bin/bash
 source $(dirname "$0")/bash-base.sh
+echo "Debug"
+echo $#
+echo $1
+echo $2
 
 if [ "$#" -eq 0 ] || [ "$#" -gt 2 ]; then
     echo "Usage: $0 <architecture> <platform>"
