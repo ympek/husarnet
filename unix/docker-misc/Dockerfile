@@ -7,7 +7,8 @@ RUN echo $TARGETPLATFORM
 RUN apt-get update -y && apt-get install -y git
 RUN git submodule update --init --recursive
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ninja-build cmake build-essential g++-mingw-w64
+# to nie ma budowac wszystkiego naraz wiec te crossbuildy (chyba) niepotrzebne
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends linux-headers-generic ninja-build cmake build-essential g++-mingw-w64
 RUN ln -sf /usr/include/asm-generic /usr/include/asm
 
 RUN ./util/build-cmake.sh $TARGETPLATFORM
