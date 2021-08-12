@@ -7,8 +7,7 @@ RUN echo $TARGETPLATFORM
 RUN apt-get update -y && apt-get install -y git
 RUN git submodule update --init --recursive
 
-RUN apt install -y ninja-build cmake build-essential g++-mingw-w64 ruby ruby-dev rubygems rpm
-
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ninja-build cmake build-essential g++-mingw-w64 ruby ruby-dev rubygems rpm
 RUN ln -sf /usr/include/asm-generic /usr/include/asm
 
 # unno if needed
