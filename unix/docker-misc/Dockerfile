@@ -5,6 +5,8 @@ FROM debian:stable-slim AS app_builder
 WORKDIR /husarnet
 COPY . .
 
+RUN apt-get update -y && apt-get install -y sudo
+
 RUN ./util/build-prepare.sh
 RUN ./util/build-cmake.sh ${TARGETPLATFORM}
 
