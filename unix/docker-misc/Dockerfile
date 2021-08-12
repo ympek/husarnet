@@ -5,9 +5,16 @@ FROM debian:stable-slim AS app_builder
 WORKDIR /husarnet
 COPY . .
 
-RUN apt-get update -y && apt-get install -y sudo
+RUN apt-get update -y && apt-get install -y git
+RUN git submodule update --init --recursive
 
-RUN ./util/build-prepare.sh
+RUN apt install -y ninja-build cmake linux-headers-generic build-essential crossbuild-essential-i386 crossbuild-essential-amd64 crossbuild-essential-arm64 crossbuild-essential-armhf g++-mingw-w64 ruby ruby-dev rubygems rpm
+
+RUN ln -sf /usr/include/asm-generic /usr/include/asm
+
+# unno if needed
+RUN gem install --no-document fpm
+
 RUN ./util/build-cmake.sh ${TARGETPLATFORM}
 
 # stage 2
