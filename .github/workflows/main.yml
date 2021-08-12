@@ -43,6 +43,9 @@ jobs:
   
     steps:
       # looks like checkout is not needed and buildkit will handle it
+      # or is it?
+      - name: Check out the repo
+        uses: actions/checkout@v2
     
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
