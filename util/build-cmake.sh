@@ -1,9 +1,5 @@
 #!/bin/bash
 source $(dirname "$0")/bash-base.sh
-echo "Debug"
-echo $#
-echo $1
-echo $2
 
 if [ "$#" -eq 0 ] || [ "$#" -gt 2 ]; then
     echo "Usage: $0 <architecture> <platform>"
@@ -19,7 +15,7 @@ if [ "$#" -eq 1 ]; then
     elif [ "$1" = "linux/arm/v7" ]; then
       arch=armhf
       platform=unix
-    elif [ "$1" = "linux/arm64/v8" ]; then
+    elif [ "$1" = "linux/arm64" ]; then
       arch=arm64
       platform=unix
     fi
