@@ -67,7 +67,8 @@ jobs:
         with:
           context: .
           file: ./unix/docker-misc/Dockerfile
-          platforms: linux/arm64/v8, linux/amd64, linux/arm/v7
+#          platforms: linux/arm64/v8, linux/amd64, linux/arm/v7
+          platforms: linux/arm64/v8, linux/amd64
           push: true
           tags: husarnet/priv_ci
           
