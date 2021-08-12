@@ -1,10 +1,9 @@
-ARG TARGETPLATFORM
 FROM debian:stable-slim AS app_builder
-
+ARG TARGETPLATFORM
 # note: will assume context as . (repo root)
 WORKDIR /husarnet
 COPY . .
-
+RUN echo $TARGETPLATFORM
 RUN apt-get update -y && apt-get install -y git
 RUN git submodule update --init --recursive
 
@@ -15,7 +14,7 @@ RUN ln -sf /usr/include/asm-generic /usr/include/asm
 # unno if needed
 RUN gem install --no-document fpm
 
-RUN ./util/build-cmake.sh ${TARGETPLATFORM}
+RUN ./util/build-cmake.sh $TARGETPLATFORM
 
 # stage 2
 FROM debian:stable-slim
