@@ -1,4 +1,4 @@
-FROM ubuntu:focal AS app_builder
+FROM ubuntu:hirsute AS app_builder
 ARG TARGETPLATFORM
 # note: will assume context as . (repo root)
 WORKDIR /husarnet
